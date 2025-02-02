@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && docker-php-ext-install pgsql pdo_pgsql
 
+# Install mysqli extension
+RUN docker-php-ext-install mysqli
+
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
@@ -13,7 +16,7 @@ RUN a2enmod rewrite
 WORKDIR /var/www/html
 
 # Copy the database configuration file into the container
-COPY db.php /var/www/html/db.php
+COPY . /var/www/html/
 
 # Expose port 80 for Apache
 EXPOSE 80
