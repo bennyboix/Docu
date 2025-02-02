@@ -12,8 +12,8 @@ RUN a2enmod rewrite
 # Set the working directory inside the container
 WORKDIR /var/www/html
 
-# Copy your PHP code to the container's web server directory
-COPY . /var/www/html/
+# Copy the database configuration file into the container
+COPY db.php /var/www/html/db.php
 
 # Expose port 80 for Apache
 EXPOSE 80
